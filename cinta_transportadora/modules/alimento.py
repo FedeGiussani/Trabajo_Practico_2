@@ -43,6 +43,12 @@ class Alimento:
         
         if aw_promedio > 0.95:
             print("La actividad acuosa de " + alim + " supera el 0.95")
+
+    def advertencia_web(self, aw_promedio, alim):
+        
+        if aw_promedio > 0.95:
+            return alim
+        return 0
             
     def redondear (self, aw_prom):
         return round(aw_prom,2)
