@@ -20,5 +20,16 @@ class TestAlimento(unittest.TestCase):
 
         self.assertEqual(aw_total, aw_prom_frutas)
 
-    def advertencia(self):
-        
+    def test_advertencia_1(self):
+        al = Alimento()
+        aw_prom=0.80
+        alim="papa"
+
+        self.assertIsNone(Alimento.advertencia(al,aw_prom,alim))
+
+    def test_advertencia_2(self):
+        al = Alimento()
+        aw_prom=0.98
+        alim="papa"
+
+        self.assertIsNotNone(Alimento.advertencia(al,aw_prom,alim))
