@@ -36,7 +36,7 @@ if __name__ == "__main__":
         lista_pesos.append(sensor.detectar_alimento()["peso"])
 
     plt.hist(lista_pesos, bins=12)
-    #plt.show()
+    plt.show()
     
 
                     

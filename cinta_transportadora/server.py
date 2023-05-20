@@ -15,7 +15,7 @@ N=0
 @app.route("/", methods=['GET', 'POST'])
 def raiz():
     global N    
-    
+
     if request.method == 'POST':
        N= int(request.form.get("N"))
 
@@ -24,7 +24,7 @@ def raiz():
 @app.route("/cinta", methods=['GET', 'POST'])
 def cinta():
     global N
-    AW=[]
+    
     al = Alimento()
     cin_tr = CintaTransportadora()   
     fr = Fruta()

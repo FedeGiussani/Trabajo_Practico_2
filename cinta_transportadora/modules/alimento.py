@@ -5,15 +5,15 @@ class Alimento:
         self.verduras = []
         self.undefined = []
         
-    def getFrutas (self):
+    def getFrutas(self):
         return self.frutas
     
-    def getverduras (self):
+    def getverduras(self):
         return self.verduras
         
     def aw_total(self, aw_prom_frutas, aw_prom_verduras):
         if aw_prom_frutas > 0:
-            if aw_prom_verduras > 0 :
+            if aw_prom_verduras > 0:
                 return (aw_prom_frutas + aw_prom_verduras)/2
         
         if aw_prom_frutas > 0:
