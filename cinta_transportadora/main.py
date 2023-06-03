@@ -1,26 +1,51 @@
-from modules.alimento import Alimento 
+from modules.cajon_alimentos import Cajon_alimentos
 from modules.cintaTransportadora import CintaTransportadora 
-from modules.fruta import Fruta 
-from modules.verdura import Verdura 
-from modules.kiwi import Kiwi 
-from modules.manzana import Manzana 
-from modules.papa import Papa 
-from modules.zanahoria import Zanahoria 
 
-al = Alimento()
-cin_tr = CintaTransportadora()   
-fr = Fruta()
-verd = Verdura()
-k = Kiwi()
-m = Manzana()
-p= Papa()
-z = Zanahoria()
+cin_tr = CintaTransportadora() #creo una cinta
 
-N=int(input("Ingrese el número de alimentos: "))
+#N=int(input("Ingrese el número de alimentos: "))
+N=10
 
+CintaTransportadora.iniciar_transporte(cin_tr, N)
+print(f"Alimentos y sus pesos: {cin_tr.getAlimentos()}")
 
-CintaTransportadora.iniciar_transporte(cin_tr, N)  
+lista_alimentos=cin_tr.getAlimentos() #lista de tuplas con (alimento, peso)
 
+cajon=Cajon_alimentos(lista_alimentos) #creo un cajon 
+
+cajon.org_alimentos() #clasifico los alimentos en frutas y verduras
+cajon.org_frutas() #clasifico frutas
+cajon.org_verduras() #clasifico verduras
+aw_alimentos={
+    "aw_prom_frutas":cajon.aw_prom_frutas(),
+    "aw_prom_verduras":cajon.aw_prom_verduras(),
+    "aw_prom_total":cajon.aw_total(),
+    "aw_manzanas":cajon.aw_manzanas(),
+    "aw_kiwis":cajon.aw_kiwis(),
+    "aw_papas":cajon.aw_papas(),
+    "aw_zanahorias":cajon.aw_zanahorias(),
+}
+"""aw_prom_frutas=cajon.aw_prom_frutas()
+aw_prom_verduras=cajon.aw_prom_verduras()
+aw_prom_total=cajon.aw_total()
+aw_manzanas=cajon.aw_manzanas()
+aw_kiwis=cajon.aw_kiwis()
+aw_papas=cajon.aw_papas()
+aw_zanahorias=cajon.aw_zanahorias()"""
+
+print(f"La actividad acuosa promedio de las manzanas es: {aw_alimentos['aw_manzanas']}")
+print(f"La actividad acuosa promedio de los kiwis es: {aw_alimentos['aw_kiwis']}")
+print(f"La actividad acuosa promedio de las zanahorias es: {aw_alimentos['aw_zanahorias']}")
+print(f"La actividad acuosa promedio de las papas es: {aw_alimentos['aw_papas']}")
+print(f"La actividad acuosa promedio de las frutas es: {aw_alimentos['aw_prom_frutas']}")
+print(f"La actividad acuosa promedio de las verduras es: {aw_alimentos['aw_prom_verduras']}")
+print(f"La actividad acuosa promedio total es: {aw_alimentos['aw_prom_total']}")
+
+for clave, valor in aw_alimentos.items():
+    if cajon.advertencia(valor):
+        print(f"La {clave} se pasa de 0,95")
+
+"""
 arreglo_alimentos = CintaTransportadora.getAlimentos(cin_tr)
 
 Alimento.org_alimentos(al, arreglo_alimentos)
@@ -99,4 +124,4 @@ Alimento.advertencia(al, aw_z,"zanahoria")
 Alimento.advertencia(al, prom_frutas,"frutas")
 Alimento.advertencia(al, prom_verduras,"verduras")
 Alimento.advertencia(al, prom_total,"conjunto alimentos")
-
+"""
