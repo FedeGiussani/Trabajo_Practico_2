@@ -6,11 +6,9 @@ class Fruta (Alimento, ABC):
     @abstractmethod
     def calcular_aw(self):
         pass
-                
-    def getKiwi (self):
-        return self.kiwis
     
-    def getManzana (self):
-        return self.manzanas
+    @abstractmethod
+    def getPeso(self):
+        pass
     
     

@@ -6,9 +6,7 @@ class Verdura(Alimento, ABC):
     @abstractmethod
     def calcular_aw(self):
         pass
-       
-    def getPapas(self):
-        return self.papas
-        
-    def getZanahorias(self):
-        return self.zanahorias
+    
+    @abstractmethod
+    def getPeso(self):
+        pass

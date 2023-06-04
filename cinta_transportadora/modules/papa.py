@@ -12,3 +12,6 @@ class Papa (Verdura):
     def calcular_aw(self):
         
         return (0.66*(np.arctan(self.C * self.peso)))
+    
+    def getPeso(self):
+        return self.peso

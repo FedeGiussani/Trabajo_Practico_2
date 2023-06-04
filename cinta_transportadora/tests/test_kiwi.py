@@ -5,13 +5,12 @@ from modules.kiwi import Kiwi
 class TestKiwi(unittest.TestCase):
 
     def test_aw_kiwi(self):
-        kiwi = Kiwi()
-        kiwi_data = {"alimento": "kiwi", "peso": 25}
+        kiwi = Kiwi(25)
         
-        resultado_actual = kiwi.aw_kiwi(kiwi_data)
+        resultado_actual = kiwi.calcular_aw()
         
-        numerador = 0.96 * (1 - np.exp(-kiwi.C * kiwi_data["peso"]))
-        denominador = 1 + np.exp(-kiwi.C * kiwi_data["peso"])
+        numerador = 0.96 * (1 - np.exp(-18 * 25))
+        denominador = 1 + np.exp(-18 * 25)
         resultado_esperado = numerador / denominador
         self.assertAlmostEqual(resultado_actual, resultado_esperado, places=2)
 

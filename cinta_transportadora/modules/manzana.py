@@ -10,4 +10,6 @@ class Manzana (Fruta):
         
         return (0.97 * ((self.C * self.peso)**2)/(1 + (self.C * self.peso)**2))
     
+    def getPeso(self):
+        return self.peso
     

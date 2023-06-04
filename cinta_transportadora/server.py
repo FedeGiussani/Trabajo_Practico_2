@@ -1,12 +1,6 @@
 from flask import Flask, app, render_template, request
 from modules.cintaTransportadora import CintaTransportadora
-from modules.alimento import Alimento
-from modules.fruta import Fruta 
-from modules.verdura import Verdura 
-from modules.kiwi import Kiwi 
-from modules.manzana import Manzana 
-from modules.papa import Papa 
-from modules.zanahoria import Zanahoria 
+from modules.cajonAlimento import CajonAlimento
 
 app = Flask(__name__)
 
@@ -25,75 +19,34 @@ def raiz():
 def cinta():
     global N
     
-    al = Alimento()
-    cin_tr = CintaTransportadora()   
-    fr = Fruta()
-    verd = Verdura()
-    k = Kiwi()
-    m = Manzana()
-    p= Papa()
-    z = Zanahoria()
+    cin_tr = CintaTransportadora() #creo una cinta
 
-    CintaTransportadora.iniciar_transporte(cin_tr, N)  
+    CintaTransportadora.iniciar_transporte(cin_tr, N)
 
-    arreglo_alimentos = CintaTransportadora.getAlimentos(cin_tr)
+    lista_alimentos=cin_tr.getAlimentos() #lista de tuplas con (alimento, peso)
 
-    Alimento.org_alimentos(al, arreglo_alimentos)
+    cajon=CajonAlimento(lista_alimentos) #creo un cajon 
 
-    Fruta.org_frutas(fr, al.getFrutas())
-    Verdura.org_verduras(verd, al.getverduras())
-    
-    aw_k = 0
-    for ki in fr.getKiwi():
-        aw_k += Kiwi.aw_kiwi(k, ki)
-    if len(fr.getKiwi()) > 0:
-        aw_k = aw_k/len(fr.getKiwi())
+    cajon.org_alimentos() #clasifico los alimentos en frutas y verduras
+    cajon.org_frutas() #clasifico frutas
+    cajon.org_verduras() #clasifico verduras
 
-    aw_k=al.redondear(aw_k)
-
-    aw_m = 0
-    for man in fr.getManzana():
-        aw_m += Manzana.aw_manzana(m, man)
-
-    if len(fr.getManzana()) > 0:    
-        aw_m = aw_m/len(fr.getManzana())
-    
-    aw_m=al.redondear(aw_m)
-        
-    aw_p = 0
-    for pa in verd.getPapas():
-        aw_p += Papa.aw_papa(p, pa)
-
-    if len(verd.getPapas()) > 0:
-        aw_p = aw_p/len(verd.getPapas())
-
-    aw_p=al.redondear(aw_p)
-    
-    aw_z = 0
-    for zan in verd.getZanahorias():
-        aw_z += Zanahoria.aw_zanahoria(z, zan)
-        
-    if len(verd.getZanahorias()) > 0:    
-        aw_z = aw_z/len(verd.getZanahorias())
-        
-    aw_z=al.redondear(aw_z) 
-
-    prom_frutas = Fruta.aw_prom_frutas(fr, aw_k, aw_m) 
-    prom_frutas=al.redondear(prom_frutas)
-    prom_verduras = Verdura.aw_prom_verduras(verd, aw_z, aw_p)
-    prom_verduras=al.redondear(prom_verduras)
-
-
-    prom_total = Alimento.aw_total(al, prom_frutas, prom_verduras)
-    prom_total=al.redondear(prom_total)
-
+    aw_alimentos={
+        "aw_prom_frutas":cajon.aw_prom_frutas(),
+        "aw_prom_verduras":cajon.aw_prom_verduras(),
+        "aw_prom_total":cajon.aw_total(),
+        "aw_manzanas":cajon.aw_manzanas(),
+        "aw_kiwis":cajon.aw_kiwis(),
+        "aw_papas":cajon.aw_papas(),
+        "aw_zanahorias":cajon.aw_zanahorias(),
+    }
     advertencia=[]
-    advertencia.append(Alimento.advertencia_web(al, aw_k,"kiwi"))
-    advertencia.append(Alimento.advertencia_web(al, aw_m,"manzana"))
-    advertencia.append(Alimento.advertencia_web(al, aw_p,"papa"))
-    advertencia.append(Alimento.advertencia_web(al, aw_z,"zanahoria"))
+    for clave, valor in aw_alimentos.items():
+        if cajon.advertencia(valor):
+            aux= clave
+            advertencia.append(aux)
 
-    return render_template("cinta.html", aw_k=aw_k, aw_m=aw_m, aw_p=aw_p, aw_z=aw_z, prom_frutas=prom_frutas, prom_verduras=prom_verduras, prom_total=prom_total, advertencia=advertencia)
+    return render_template("cinta.html", aw_alimentos=aw_alimentos, advertencia=advertencia)
 
 if __name__ == "__main__":
     app.run(debug=True)

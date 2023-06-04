@@ -3,16 +3,36 @@ from modules.kiwi import Kiwi
 from modules.papa import Papa
 from modules.zanahoria import Zanahoria
 
-class Cajon_alimentos():
+class CajonAlimento():
     def __init__(self, lista_alimentos_pesos):
         self.lista_alim_pesos=lista_alimentos_pesos #lista de tuplas de (alim,peso)
         self.frutas = []
         self.verduras = []
-        self.undefined = []
         self.kiwis = [] 
         self.manzanas = []
         self.papas = [] 
         self.zanahorias = []
+        self.org_alimentos() #organiza alimentos en dos listas de objetos Fruta() y Verdura()
+        self.org_frutas() #organiza frutas en dos listas de objetos Manzana() y Kiwi()
+        self.org_verduras() #organiza verduras en dos listas de objetos Papa() y Zanahoria()
+    
+    def getFrutas(self):
+        return self.frutas
+    
+    def getVerduras(self):
+        return self.verduras
+    
+    def getKiwis(self):
+        return self.kiwis
+
+    def getManzanas(self):
+        return self.manzanas
+    
+    def getPapas(self):
+        return self.papas
+    
+    def getZanahorias(self):
+        return self.zanahorias
     
     def org_alimentos(self): #organiza los alimentos en listas de verduras y frutas y crea objetos de cada alimento
         for alimento in self.lista_alim_pesos:
@@ -48,7 +68,6 @@ class Cajon_alimentos():
         aw_manzanas=0
         if len(self.manzanas) > 0: #control de que hay manzanas 
             for manzana in self.manzanas:
-                #print(manzana.calcular_aw())
                 aw_manzanas = aw_manzanas + manzana.calcular_aw()
             
             return self.redondear(aw_manzanas/len(self.manzanas))
@@ -60,17 +79,15 @@ class Cajon_alimentos():
             for kiwi in self.kiwis:
                 aw_kiwis = aw_kiwis + kiwi.calcular_aw()
             
-            return self.redondear(aw_kiwis/len(self.manzanas))
+            return self.redondear(aw_kiwis/len(self.kiwis))
         return 0
     
     def aw_papas(self):
         aw_papas=0
         if len(self.papas) > 0: #control de que hay papas
             for papa in self.papas:
-                print(papa.calcular_aw())
                 aw_papas = aw_papas + papa.calcular_aw()
-            
-            return self.redondear(aw_papas/len(self.manzanas))
+            return self.redondear(aw_papas/len(self.papas))
         return 0
     
     def aw_zanahorias(self):
@@ -79,7 +96,7 @@ class Cajon_alimentos():
             for zanahoria in self.zanahorias:
                 aw_zanahorias = aw_zanahorias + zanahoria.calcular_aw()
             
-            return self.redondear(aw_zanahorias/len(self.manzanas))
+            return self.redondear(aw_zanahorias/len(self.zanahorias))
         return 0
     
     def aw_prom_frutas(self):

@@ -7,52 +7,50 @@
 <body style="background-color:rgb(219, 223, 165);">
     <h1 style="background-color:rgb(101, 221, 171); text-align:center;" >Resultados</h1><br>
     <center>
-        {% if aw_k>0.95: %}
-            <h3 style="background-color:rgb(221, 51, 51)">La actividad acuosa promedio del kiwi es: {{aw_k}}</h3><br>
+        {% if aw_alimentos.aw_kiwis>0.95: %}
+            <h3 style="background-color:rgb(221, 51, 51)">La actividad acuosa promedio del kiwi es: {{aw_alimentos.aw_kiwis}}</h3><br>
         {% else %}
-            <h3>La actividad acuosa promedio del kiwi es: {{aw_k}}</h3><br>
+            <h3>La actividad acuosa promedio del kiwi es: {{aw_alimentos.aw_kiwis}}</h3><br>
         {% endif %}
 
-        {% if aw_m>0.95: %}
-            <h3 style="background-color:rgb(221, 51, 51)">La actividad acuosa promedio de la manzana es: {{aw_m}}</h3><br>
+        {% if aw_alimentos.aw_manzanas>0.95: %}
+            <h3 style="background-color:rgb(221, 51, 51)">La actividad acuosa promedio de la manzana es: {{aw_alimentos.aw_manzanas}}</h3><br>
         {% else %}
-            <h3>La actividad acuosa promedio de la manzana es: {{aw_m}}</h3><br>
+            <h3>La actividad acuosa promedio de la manzana es: {{aw_alimentos.aw_manzanas}}</h3><br>
         {% endif %}
         
-        {% if aw_p>0.95: %}
-            <h3 style="background-color:rgb(221, 51, 51)">La actividad acuosa promedio de la papa es: {{aw_p}}</h3><br>
+        {% if aw_alimentos.aw_papas>0.95: %}
+            <h3 style="background-color:rgb(221, 51, 51)">La actividad acuosa promedio de la papa es: {{aw_alimentos.aw_papas}}</h3><br>
         {% else %}
-            <h3>La actividad acuosa promedio de la papa es: {{aw_p}}</h3><br>
+            <h3>La actividad acuosa promedio de la papa es: {{aw_alimentos.aw_papas}}</h3><br>
         {% endif %}
         
-        {% if aw_z>0.95: %}
-            <h3 style="background-color:rgb(221, 51, 51)">La actividad acuosa promedio de la zanahoria es: {{aw_z}}</h3><br>
+        {% if aw_alimentos.aw_zanahorias>0.95: %}
+            <h3 style="background-color:rgb(221, 51, 51)">La actividad acuosa promedio de la zanahoria es: {{aw_alimentos.aw_zanahorias}}</h3><br>
         {% else %}
-            <h3>La actividad acuosa promedio de la zanahoria es: {{aw_z}}</h3><br>
+            <h3>La actividad acuosa promedio de la zanahoria es: {{aw_alimentos.aw_zanahorias}}</h3><br>
         {% endif %}
         
-        {% if prom_frutas>0.95: %}
-            <h3 style="background-color:rgb(221, 51, 51)">La actividad acuosa promedio de las frutas es: {{prom_frutas}}</h3><br>
+        {% if aw_alimentos.aw_prom_frutas>0.95: %}
+            <h3 style="background-color:rgb(221, 51, 51)">La actividad acuosa promedio de las frutas es: {{aw_alimentos.aw_prom_frutas}}</h3><br>
         {% else %}
-            <h3>La actividad acuosa promedio de las frutas es: {{prom_frutas}}</h3><br>
+            <h3>La actividad acuosa promedio de las frutas es: {{aw_alimentos.aw_prom_frutas}}</h3><br>
         {% endif %}
 
-        {% if prom_verduras>0.95: %}
-            <h3 style="background-color:rgb(221, 51, 51)">La actividad acuosa promedio de las verduras es: {{prom_verduras}}</h3><br>
+        {% if aw_alimentos.aw_prom_verduras>0.95: %}
+            <h3 style="background-color:rgb(221, 51, 51)">La actividad acuosa promedio de las verduras es: {{aw_alimentos.aw_prom_verduras}}</h3><br>
         {% else %}
-            <h3>La actividad acuosa promedio de las verduras es: {{prom_verduras}}</h3><br>
+            <h3>La actividad acuosa promedio de las verduras es: {{aw_alimentos.aw_prom_verduras}}</h3><br>
         {% endif %}
 
-        {% if prom_total>0.95: %}
-            <h3 style="background-color:rgb(221, 51, 51)">La actividad acuosa promedio total del conjunto de alimentos es: {{prom_total}}</h3><br>
+        {% if aw_alimentos.aw_prom_total>0.95: %}
+            <h3 style="background-color:rgb(221, 51, 51)">La actividad acuosa promedio total del conjunto de alimentos es: {{aw_alimentos.aw_prom_total}}</h3><br>
         {% else %}
-            <h3>La actividad acuosa promedio total del conjunto de alimentos es: {{prom_total}}</h3><br>
+            <h3>La actividad acuosa promedio total del conjunto de alimentos es: {{aw_alimentos.aw_prom_total}}</h3><br>
         {% endif %}
 
         {% for i in advertencia: %}
-            {% if i!=0: %}
-                <h3 style="color: rgb(255, 0, 0);"> Se recomienda inspeccionar el cajón de {{i}} </li>
-            {% endif %}
+            <h3 style="color: rgb(255, 0, 0);"> La {{i}} se pasa de 0,95 se recomienda verificar cajón.</li>
         {% endfor %}
 
         <form action="/">

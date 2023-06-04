@@ -10,3 +10,6 @@ class Kiwi (Fruta):
     def calcular_aw(self):
         
         return 0.96 * (1-(np.exp(-self.C * self.peso)))/(1 + (np.exp(-self.C * self.peso)))
+    
+    def getPeso(self):
+        return self.peso

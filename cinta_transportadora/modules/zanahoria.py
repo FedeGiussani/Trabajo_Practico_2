@@ -9,3 +9,6 @@ class Zanahoria(Verdura):
         
     def calcular_aw(self):
         return (0.96*(1-np.exp(-self.C*self.peso)))
+    
+    def getPeso(self):
+        return self.peso
