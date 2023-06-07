@@ -31,22 +31,22 @@
             <h3>La actividad acuosa promedio de la zanahoria es: {{aw_alimentos.aw_zanahorias}}</h3><br>
         {% endif %}
         
-        {% if aw_alimentos.aw_prom_frutas>0.95: %}
-            <h3 style="background-color:rgb(221, 51, 51)">La actividad acuosa promedio de las frutas es: {{aw_alimentos.aw_prom_frutas}}</h3><br>
+        {% if aw_alimentos.aw_frutas>0.95: %}
+            <h3 style="background-color:rgb(221, 51, 51)">La actividad acuosa promedio de las frutas es: {{aw_alimentos.aw_frutas}}</h3><br>
         {% else %}
-            <h3>La actividad acuosa promedio de las frutas es: {{aw_alimentos.aw_prom_frutas}}</h3><br>
+            <h3>La actividad acuosa promedio de las frutas es: {{aw_alimentos.aw_frutas}}</h3><br>
         {% endif %}
 
-        {% if aw_alimentos.aw_prom_verduras>0.95: %}
-            <h3 style="background-color:rgb(221, 51, 51)">La actividad acuosa promedio de las verduras es: {{aw_alimentos.aw_prom_verduras}}</h3><br>
+        {% if aw_alimentos.aw_verduras>0.95: %}
+            <h3 style="background-color:rgb(221, 51, 51)">La actividad acuosa promedio de las verduras es: {{aw_alimentos.aw_verduras}}</h3><br>
         {% else %}
-            <h3>La actividad acuosa promedio de las verduras es: {{aw_alimentos.aw_prom_verduras}}</h3><br>
+            <h3>La actividad acuosa promedio de las verduras es: {{aw_alimentos.aw_verduras}}</h3><br>
         {% endif %}
 
-        {% if aw_alimentos.aw_prom_total>0.95: %}
-            <h3 style="background-color:rgb(221, 51, 51)">La actividad acuosa promedio total del conjunto de alimentos es: {{aw_alimentos.aw_prom_total}}</h3><br>
+        {% if aw_alimentos.aw_total>0.95: %}
+            <h3 style="background-color:rgb(221, 51, 51)">La actividad acuosa promedio total del conjunto de alimentos es: {{aw_alimentos.aw_total}}</h3><br>
         {% else %}
-            <h3>La actividad acuosa promedio total del conjunto de alimentos es: {{aw_alimentos.aw_prom_total}}</h3><br>
+            <h3>La actividad acuosa promedio total del conjunto de alimentos es: {{aw_alimentos.aw_total}}</h3><br>
         {% endif %}
 
         {% for i in advertencia: %}
