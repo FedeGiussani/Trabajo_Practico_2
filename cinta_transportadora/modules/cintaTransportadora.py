@@ -1,4 +1,4 @@
-from modules.deteccion import DetectorAlimento
+from modules.detectorAlimento import DetectorAlimento
 
 class CintaTransportadora:
 

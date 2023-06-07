@@ -1,6 +1,6 @@
 import unittest
 from modules.cintaTransportadora import CintaTransportadora
-from modules.deteccion import DetectorAlimento as det
+from modules.detectorAlimento import DetectorAlimento as det
 
 
 class TestCintaTransportadora(unittest.TestCase):
