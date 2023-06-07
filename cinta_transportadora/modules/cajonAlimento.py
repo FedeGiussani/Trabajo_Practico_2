@@ -12,25 +12,6 @@ class CajonAlimento():
         self.alimentos=[]
         self.org_alimentos() #organiza los alimentos creando objetos en la lista alimentos 
         
-    
-    def getFrutas(self):
-        return self.frutas
-    
-    def getVerduras(self):
-        return self.verduras
-    
-    def getKiwis(self):
-        return self.kiwis
-
-    def getManzanas(self):
-        return self.manzanas
-    
-    def getPapas(self):
-        return self.papas
-    
-    def getZanahorias(self):
-        return self.zanahorias
-    
     def org_alimentos(self): #crea una lista de objetos alimentos
         for alimento in self.lista_alim_pesos:
             if alimento[0] == "manzana":

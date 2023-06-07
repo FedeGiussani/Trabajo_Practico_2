@@ -1,9 +1,5 @@
 import unittest
 from modules.cajonAlimento import CajonAlimento
-from modules.manzana import Manzana
-from modules.kiwi import Kiwi
-from modules.papa import Papa
-from modules.zanahoria import Zanahoria
 
 
 
