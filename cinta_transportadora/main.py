@@ -13,7 +13,7 @@ def main():
     cajon=CajonAlimento(lista_alimentos) #creo un cajon 
 
 
-    aw_alimentos=cajon.aw_promedio() #diccionario que tiene toda las aw
+    aw_alimentos=cajon.aw_alimentos() #diccionario que tiene toda las aw
     print(f"La actividad acuosa promedio de las manzanas es: {aw_alimentos['aw_manzanas']}")
     print(f"La actividad acuosa promedio de los kiwis es: {aw_alimentos['aw_kiwis']}")
     print(f"La actividad acuosa promedio de las zanahorias es: {aw_alimentos['aw_zanahorias']}")

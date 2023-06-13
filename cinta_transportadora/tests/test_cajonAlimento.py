@@ -4,8 +4,7 @@ from modules.cajonAlimento import CajonAlimento
 
 
 class TestCajonAlimento(unittest.TestCase):
-    
-    def test_aw_promedio(self):
+    def setUp(self):
         lista_alimentos_pesos = [('zanahoria', 0.15), ('zanahoria', 0.3), 
                          ('manzana', 0.25), ('manzana', 0.3), ('papa', 0.05), 
                          ('zanahoria', 0.35), ('zanahoria', 0.3), ('kiwi', 0.4), 
@@ -13,8 +12,16 @@ class TestCajonAlimento(unittest.TestCase):
                          ('kiwi', 0.4), ('papa', 0.45), ('kiwi', 0.45), ('kiwi', 0.15), ('kiwi', 0.2), 
                          ('kiwi', 0.25), ('kiwi', 0.3), ('manzana', 0.05)]
         
-        cajon = CajonAlimento(lista_alimentos_pesos)
-        aw=cajon.aw_promedio()
+        self.cajon = CajonAlimento(lista_alimentos_pesos)
+
+        lista_alimentos=[('manzana', 0.05), ('zanahoria', 0.05), ('kiwi', 0.5), ('papa', 0.3), ('papa', 0.15), 
+                         ('kiwi', 0.4), ('manzana', 0.15), ('kiwi', 0.4), ('manzana', 0.3), ('papa', 0.25)]
+        
+        self.cajon_1=CajonAlimento(lista_alimentos)
+
+    def test_aw_promedio(self):
+        
+        aw=self.cajon.aw_alimentos()
 
         self.assertEqual(aw["aw_manzanas"], 0.78)
         self.assertEqual(aw["aw_kiwis"], 0.93)
@@ -26,14 +33,12 @@ class TestCajonAlimento(unittest.TestCase):
 
     def test_advertencia(self):
         
-        lista_alimentos=[('manzana', 0.05), ('zanahoria', 0.05), ('kiwi', 0.5), ('papa', 0.3), ('papa', 0.15), ('kiwi', 0.4), ('manzana', 0.15), ('kiwi', 0.4), ('manzana', 0.3), ('papa', 0.25)]
         
-        cajon=CajonAlimento(lista_alimentos)
-        aw=cajon.aw_promedio()
+        aw=self.cajon_1.aw_alimentos()
 
         for clave, valor in aw.items():
-            if cajon.advertencia(valor):
-                self.assertTrue(cajon.advertencia(valor))
+            if self.cajon_1.advertencia(valor):
+                self.assertTrue(self.cajon_1.advertencia(valor))
 
 if __name__ == '__main__':
     unittest.main()

@@ -3,9 +3,8 @@ import numpy as np
 
 class Kiwi (Fruta):
     def __init__(self, peso):
-        super().__init__() 
+        super().__init__(peso) 
         self.C = 18
-        self.peso=peso
 
     def calcular_aw(self):
         

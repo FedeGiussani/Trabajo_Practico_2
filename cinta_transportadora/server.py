@@ -26,7 +26,7 @@ def cinta():
     lista_alimentos=cin_tr.getAlimentos() #lista de tuplas con (alimento, peso)
 
     cajon=CajonAlimento(lista_alimentos) #creo un cajon 
-    aw_alimentos=cajon.aw_promedio()
+    aw_alimentos=cajon.aw_alimentos()
     
     advertencia=[]
     for clave, valor in aw_alimentos.items():

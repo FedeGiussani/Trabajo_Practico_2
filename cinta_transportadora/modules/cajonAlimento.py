@@ -26,74 +26,27 @@ class CajonAlimento():
             elif alimento[0] == "zanahoria":
                 self.alimentos.append(Zanahoria(alimento[1]))
 
-    def aw_promedio(self):
-        aw_manzanas=0
-        aw_kiwis=0
-        aw_papas=0
-        aw_zanahorias=0
-        manzana=0
-        kiwi=0
-        papa=0
-        zanahoria=0
-
+    def aw_promedio(self, clase):
+        aw=0
+        al=0
         for alimento in self.alimentos:
-            if isinstance(alimento, Manzana):
-                aw_manzanas = aw_manzanas + alimento.calcular_aw()
-                manzana = manzana +1
-            elif isinstance(alimento, Kiwi):
-                aw_kiwis = aw_kiwis + alimento.calcular_aw()
-                kiwi=kiwi+1
-            elif isinstance(alimento, Papa):
-                aw_papas = aw_papas + alimento.calcular_aw()
-                papa=papa+1
-            elif isinstance(alimento, Zanahoria):
-                aw_zanahorias = aw_zanahorias + alimento.calcular_aw()
-                zanahoria=zanahoria+1
+            if isinstance(alimento, clase):
+                aw = aw + alimento.calcular_aw()
+                al = al +1
+        if al>0:
+            return self.redondear(aw/al)
+        return 0
+
+    def aw_alimentos(self):
         
-        aw_verduras=0
-        for verdura in self.alimentos:
-            if issubclass(type(verdura), Verdura):
-                aw_verduras = aw_verduras+verdura.calcular_aw()
-
-        aw_frutas=0
-        for fruta in self.alimentos:
-            if issubclass(type(fruta), Fruta):
-                aw_frutas = aw_frutas+fruta.calcular_aw()
-
-        aw_prom=0
-        for alimento in self.alimentos:
-            if issubclass(type(alimento), Alimento):
-                aw_prom = aw_prom+alimento.calcular_aw()
-
-        if manzana>0:
-            aw_manzanas = self.redondear(aw_manzanas/manzana)
-
-        if kiwi>0:
-            aw_kiwis = self.redondear(aw_kiwis/kiwi)
-
-        if papa>0:
-            aw_papas = self.redondear(aw_papas/papa)
-
-        if zanahoria>0:
-            aw_zanahorias = self.redondear(aw_zanahorias/zanahoria)
-        
-        if (manzana+kiwi)>0:
-            aw_frutas = self.redondear(aw_frutas/(manzana+kiwi))
-
-        if (papa+zanahoria)>0:
-            aw_verduras = self.redondear(aw_verduras/(papa+zanahoria))
-
-        if len(self.alimentos)>0:
-            aw_prom = self.redondear(aw_prom/len(self.alimentos))
-
         return {
-            "aw_manzanas" : aw_manzanas,
-            "aw_kiwis" : aw_kiwis,
-            "aw_papas" : aw_papas,
-            "aw_zanahorias" : aw_zanahorias,
-            "aw_frutas" : aw_frutas,
-            "aw_verduras" : aw_verduras,
-            "aw_total" : aw_prom 
+            "aw_manzanas" : self.aw_promedio(Manzana),
+            "aw_kiwis" : self.aw_promedio(Kiwi),
+            "aw_papas" : self.aw_promedio(Papa),
+            "aw_zanahorias" : self.aw_promedio(Zanahoria),
+            "aw_frutas" : self.aw_promedio(Fruta),
+            "aw_verduras" : self.aw_promedio(Verdura),
+            "aw_total" : self.aw_promedio(Alimento) 
         }
   
     def redondear (self, aw_prom):
